@@ -3,9 +3,6 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const IpFilter = require('express-ipfilter').IpFilter;
-
-
 const {
   login,
   accessToken,
@@ -28,10 +25,6 @@ app.use(
   })
 );
 app.use(express.urlencoded({ extended: true }))
-// 허용 IP 목록 정의
-const ips = ['127.0.0.1', '::1']; 
-// IP 필터 미들웨어 적용
-app.use(IpFilter(ips, { mode: 'allow' }));
 
 
 app.post("/login", login);
